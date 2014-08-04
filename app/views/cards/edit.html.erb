@@ -1,0 +1,9 @@
+<h1>Edit Card</h1>
+<% if :notice %><%= notice %><% end %>
+<%= form_for [@project, @card] do |f| %>
+	<%= f.text_field :title, placeholder: "title" %>
+	<br>
+	<%= f.text_area :body, placeholder: "body" %>
+	<br>
+	<%= f.submit :edit %>
+<% end %>

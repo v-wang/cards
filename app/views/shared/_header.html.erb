@@ -1,0 +1,19 @@
+<header>
+	<% if user_signed_in? && @project %>
+		<nav>
+			<%=link_to 'sign out', destroy_user_session_path, method: :delete %> | <%= link_to 'projects', projects_path %>
+			<%= link_to "new card", project_cards_path(@project, card: {title: "???"}), method: :post, remote: true, class:"button" %>
+		</nav>		
+			<%= content_tag :h1, best_in_place(@project, :title)%>
+	<% elsif user_signed_in? %>	
+		<nav>
+			<%=link_to 'sign out', destroy_user_session_path, method: :delete %> | <%= link_to 'projects', projects_path %>
+		</nav>		
+			<%= content_tag :h1, current_user.name %>
+	<% else %>
+		<nav>
+			<%= link_to 'sign in', new_user_session_path %> | <%= link_to 'sign up', new_user_registration_path %>
+		</nav>		
+			<%= content_tag :h1, "Cards" %>
+	<% end %>		
+</header>

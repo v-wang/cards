@@ -1,0 +1,6 @@
+<h1>Projects</h1>
+<% @projects.each do |project| %>
+	<%= link_to project.title, project_path(project)%>(<%= link_to "X", project_path(project), method: "delete" %>)
+	<br>
+	<br>
+<% end %>
